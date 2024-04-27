@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Similar Jobs Finder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      .container {
+        width: 60%;
+        margin: auto;
+      }
+      form {
+        width: 50%;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"] {
+        width: calc(100% - 20px); /* Subtract padding and border */
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .job-card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      .job-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .skills-categories {
+        font-style: italic;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      .skills-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
+      .skills-list li {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find Similar Jobs</h1>
+
+      <form method="post">
+        <label for="job_title">Enter Job Title:</label>
+        <input type="text" id="job_title" name="job_title" />
+        <button type="submit">Find Similar Jobs</button>
+      </form>
+
+      <br />
+      {% if job_title %}
+      <h2>Similar Jobs and Similar Categories for "{{ job_title }}"</h2>
+      {% endif %} {% if similar_job_titles %} {% for title, categories, count,
+      skills in zip(similar_job_titles, similar_skills_categories,
+      similar_skill_counts, similar_skills) %}
+      <div class="job-card">
+        <div class="job-title">{{ title }}</div>
+        <div class="skills-categories">The Category: {{ categories }}</div>
+        <div>Number of Skills: {{ count }}</div>
+        <ul class="skills-list">
+          {% for skill in skills %}
+          <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %} {% endif %}
+    </div>
+  </body>
+</html>

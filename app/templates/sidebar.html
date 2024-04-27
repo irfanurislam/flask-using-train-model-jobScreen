@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      aside {
+        background-color: #333;
+        width: 20%;
+        color: #fff;
+        padding: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      aside nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      aside nav ul li {
+        margin-bottom: 10px;
+      }
+
+      aside nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+      }
+
+      aside nav ul li a:hover {
+        text-decoration: underline;
+      }
+
+      aside nav ul li ul {
+        list-style: none;
+        padding-left: 20px;
+      }
+
+      aside nav ul li ul li {
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <aside>
+      <!-- Your sidebar content here -->
+      <nav>
+        <ul>
+          <li><a href="/logout">Logout</a></li>
+          <li>
+            <a href="/login">Login</a> or <a href="/register">Register</a>
+          </li>
+          <li><a href="/job_list">Live Job</a></li>
+          <li><a href="/insert_job_offer">Post a Job</a></li>
+          <li>
+            <a href="/train_model">Train Model for check Similarity a Resume</a>
+          </li>
+          <li><a href="/single_cv_upload">Upload Resume</a></li>
+          <li><a href="/train">Train for Recommended Skills</a></li>
+          <li><a href="/search">Top Job with Recommended Skills</a></li>
+          <li>
+            <a href="/display">All Resumes Rank as Company and Job position</a>
+          </li>
+          <li><a href="/top_jobs">Top Jobs in 2024 (From DB)</a></li>
+          <li><a href="/top_skills">Top Skills (Recommended) (From DB)</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </body>
+</html>

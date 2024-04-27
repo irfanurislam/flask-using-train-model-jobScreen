@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+        }
+        .result-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="result-box">
+            {% if model_accuracy %}
+            <p> Model was successfully trained </p><br>
+            <h2>Model Accuracy: {{ model_accuracy }}</h2>
+            {% else %}
+            <p>Model accuracy will be displayed here after training.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

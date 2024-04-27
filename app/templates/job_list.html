@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Job Offers</title>
+    <style>
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+      .container {
+        width: 1000px;
+        margin: auto;
+      }
+
+      .job {
+        margin-bottom: 20px;
+        position: relative;
+        border: 1px solid #ccc; /* Add border style */
+        padding: 10px; /* Add padding for better spacing */
+      }
+
+      .buttons {
+        margin-top: 10px;
+        display: flex; /* Use flexbox for button alignment */
+        justify-content: flex-start; /* Align buttons to the left */
+      }
+
+      .button {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      .button:last-child {
+        margin-right: 0; /* Remove margin from the last button to prevent space */
+      }
+
+      .apply-button {
+        position: absolute;
+        top: 0;
+        right: 0; /* Position the "Apply" button to the top right */
+      }
+      .pagination-container {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .pagination {
+        display: inline-block;
+      }
+      .pagination a {
+        display: inline-block;
+        padding: 5px 10px;
+        margin-right: 5px;
+        background-color: #f4f4f4;
+        border: 1px solid #c7b2b2;
+        border-radius: 3px;
+        text-decoration: none;
+      }
+      .pagination .active {
+        background-color: #007bff;
+        color: #fff;
+        border: 1px solid #007bff;
+      }
+      ul {
+        list-style-type: none; /* Remove bullet points */
+        padding: 0; /* Remove default padding */
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <div class="container">
+      <h1>Live Job Offers (Total: {{ total_jobs }})</h1>
+      <ul>
+        {% for job in job_offers %}
+        <li class="job">
+          <strong>{{ job.job_title }}</strong> at {{ job.company_name }}<br />
+          Location: {{ job.company_address }}<br />
+          Salary: {{ job.salary }}<br />
+          Description: {{ job.job_description }}<br />
+          <form method="GET" action="/job/{{ job.id }}" class="apply-button">
+            <button type="submit" class="button">Apply</button>
+          </form>
+          <div class="buttons">
+            <a href="/edit_job_offer/{{ job.id }}" class="button">Edit</a>
+            <a href="/delete_job_offer/{{ job.id }}" class="button">Delete</a>
+            <a href="/job/{{ job.id }}" class="button">View</a>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% if total_jobs > per_page %}
+      <div class="pagination-container">
+        <div class="pagination">
+          {% for page_num in range(1, (total_jobs // per_page) + 2) %}
+          <a
+            href="?page={{ page_num }}"
+            class="{% if page_num == page %}active{% endif %}"
+            >{{ page_num }}</a
+          >
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

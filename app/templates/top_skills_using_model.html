@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Skills Results</title>
+    <style>
+      /* Add your CSS styles here */
+      table {
+        border-collapse: collapse;
+        width: 60%; /* Adjust the width of the table as needed */
+        margin: auto; /* Center the table horizontally */
+      }
+      th,
+      td {
+        border: 2px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 align="center">Recomanded Skills for the Position</h1>
+    <h2 align="center">{{ job_title }}</h2>
+    <!-- <h3>Relevant Skills</h3>
+    <ul>
+        {% for category in relevant_skills %}
+        <li>{{ category }}</li>
+        {% endfor %}
+    </ul> -->
+    <table>
+      <tr>
+        <th>SK I LL S</th>
+        <th>Maximum Similarity Score</th>
+      </tr>
+      {% for word, frequency in word_counts %}
+      <tr>
+        <td>{{ word }}</td>
+        <td>{{ frequency }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

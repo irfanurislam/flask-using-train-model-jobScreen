@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Count</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: auto; /* Center the table */
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">Top Skills (15)</h2>
+
+    <table>
+      <tr>
+        <th>Serial No.</th>
+        <th>Skills (Recomanded Skills)</th>
+        <th>Maximum skills used in 2024</th>
+      </tr>
+      {% for serial, word, count in top_15_skills_words_with_serial %}
+      <tr>
+        <td>{{ serial }}</td>
+        <td>{{ word }}</td>
+        <td>{{ count }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

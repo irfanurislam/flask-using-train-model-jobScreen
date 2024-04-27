@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Job Offer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .form-container {
+        width: 80%;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center; /* Center align the form */
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      input[type="text"],
+      textarea {
+        width: calc(100% - 5px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+
+      input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      @media screen and (max-width: 600px) {
+        .form-container {
+          width: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Edit Job Offer</h1>
+      <form method="POST">
+        <label for="job_title">Job Title:</label><br />
+        <input
+          type="text"
+          id="job_title"
+          name="job_title"
+          value="{{ job_offer[1] }}"
+        /><br /><br />
+
+        <label for="company_name">Company Name:</label><br />
+        <input
+          type="text"
+          id="company_name"
+          name="company_name"
+          value="{{ job_offer[2] }}"
+        /><br /><br />
+
+        <label for="about_company">About Company:</label><br />
+        <textarea id="about_company" name="about_company">
+{{ job_offer[3] }}</textarea
+        ><br /><br />
+
+        <label for="company_address">Company Address:</label><br />
+        <input
+          type="text"
+          id="company_address"
+          name="company_address"
+          value="{{ job_offer[4] }}"
+        /><br /><br />
+
+        <label for="job_description">Job Description:</label><br />
+        <textarea id="job_description" name="job_description">
+{{ job_offer[5] }}</textarea
+        ><br /><br />
+
+        <label for="skills">Skills:</label><br />
+        <input
+          type="text"
+          id="skills"
+          name="skills"
+          value="{{ job_offer[7] }}"
+        /><br /><br />
+
+        <label for="key_responsibility">Key Responsibility:</label><br />
+        <textarea id="key_responsibility" name="key_responsibility">
+{{ job_offer[8] }}</textarea
+        ><br /><br />
+
+        <label for="qualification">Qualification:</label><br />
+        <textarea id="qualification" name="qualification">
+{{ job_offer[9] }}</textarea
+        ><br /><br />
+
+        <label for="benefits">Benefits:</label><br />
+        <textarea id="benefits" name="benefits">{{ job_offer[10] }}</textarea
+        ><br /><br />
+
+        <label for="salary">Salary:</label><br />
+        <input
+          type="text"
+          id="salary"
+          name="salary"
+          value="{{ job_offer[11] }}"
+        /><br /><br />
+
+        <label for="how_to_apply">How to Apply:</label><br />
+        <textarea id="how_to_apply" name="how_to_apply">
+{{ job_offer[12] }}</textarea
+        ><br /><br />
+
+        <input type="submit" value="Save Changes" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insert Job Offer</title>
+    <style>
+      /* Centering the form */
+      .form-container {
+        width: 70%; /* Adjust width as needed */
+        margin: 0 auto; /* Center horizontally */
+      }
+      /* Style for form labels */
+      label {
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-right: 10px; /* Add spacing between checkboxes */
+        border: 1px solid #ccc; /* Add border */
+        padding: 5px; /* Add padding */
+        border-radius: 4px; /* Add border radius */
+      }
+      /* Style for form inputs */
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      /* Style for submit button */
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      /* Style for submit button on hover */
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <h1 style="text-align: center">Post a Job</h1>
+    <div class="form-container">
+      <form action="/insert_job_offer" method="post">
+        <label for="job_title">Job Title:</label>
+        <input type="text" id="job_title" name="job_title" required /><br />
+
+        <label for="company_name">Company Name:</label>
+        <input
+          type="text"
+          id="company_name"
+          name="company_name"
+          required
+        /><br />
+
+        <label for="company_address">Company Address:</label>
+        <textarea
+          id="company_address"
+          name="company_address"
+          required
+        ></textarea
+        ><br />
+
+        <label for="job_description">Job Description:</label>
+        <textarea
+          id="job_description"
+          name="job_description"
+          required
+        ></textarea
+        ><br />
+
+        <label>SKILLS:</label><br /><br />
+        <div>
+          {% for category, skills in skill_categories.items() %}
+          <strong>{{ category }}</strong><br />
+
+          <!-- Hidden input to store the category for each skill -->
+          {% for skill in skills %}
+          <input
+            type="hidden"
+            name="skill_categories[]"
+            value="{{ category }}"
+          />
+          {% endfor %}
+
+          <div>
+            {% for skill in skills %}
+            <label>
+              <input
+                type="checkbox"
+                id="skill_{{ skill }}"
+                name="skills"
+                value="{{ skill }}"
+              />
+              {{ skill }}
+            </label>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <label for="about_company">About Company:</label>
+        <textarea id="about_company" name="about_company"></textarea><br />
+
+        <label for="key_responsibility">Key Responsibility:</label>
+        <textarea id="key_responsibility" name="key_responsibility"></textarea
+        ><br />
+
+        <label for="qualification">Qualification:</label>
+        <textarea id="qualification" name="qualification"></textarea><br />
+
+        <label for="benefits">Benefits:</label>
+        <textarea id="benefits" name="benefits"></textarea><br />
+
+        <label for="salary">Salary:</label>
+        <input type="text" id="salary" name="salary" /><br />
+
+        <label for="how_to_apply">How to Apply:</label>
+        <textarea id="how_to_apply" name="how_to_apply"></textarea><br />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generated HTML Files</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .content {
+        width: 80%;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .file-info {
+        flex-grow: 1;
+      }
+
+      .file-link {
+        text-decoration: none;
+        color: #333;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+      }
+
+      .delete-btn,
+      .view-btn {
+        padding: 8px 20px;
+        background-color: #ff6347;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .delete-btn:hover,
+      .view-btn:hover {
+        background-color: #8d1e0a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Generated HTML Files</h1>
+      <ul>
+        {% for file_name in generated_files %}
+        <li>
+          <div class="file-info">
+            <a
+              class="file-link"
+              href="{{ url_for('serve_file', filename=file_name) }}"
+              >{{ file_name }}</a
+            >
+          </div>
+          <div class="buttons">
+            <a
+              class="view-btn"
+              href="{{ url_for('serve_file', filename=file_name) }}"
+              >View</a
+            >
+            &nbsp;
+            <form action="{{ url_for('delete_file') }}" method="post">
+              <input type="hidden" name="file_name" value="{{ file_name }}" />
+              <button type="submit" class="delete-btn">Delete</button>
+            </form>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
